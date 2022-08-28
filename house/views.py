@@ -11,9 +11,14 @@ def initial_page(request):
     for i in range(len(houses)):
         houses[i].descricao = houses[i].descricao[0:200]
         minilist.append(houses[i])
-        if(i%3 == 0):
+        if(i%3 == 2):
             houseslist.append(minilist)
             minilist = []
+
+    if len(minilist) != 0:
+        #for i in range(3-len(minilist)):
+            #minilist.append(houses[i])
+        houseslist.append(minilist)
             
 
     return render(request, 'house/initial_page.html', {'HouseList':houseslist})
