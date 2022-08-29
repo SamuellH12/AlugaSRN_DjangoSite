@@ -1,0 +1,26 @@
+.titulo 
+{
+    margin: 1em 0.5em;
+}
+
+.details
+{
+    margin: 1em 0.5em;
+}
+
+.preco
+{
+    color: red;
+}
+
+.linkSemDec
+{
+    text-decoration: none;
+    color: inherit;
+}
+
+.linkSemDec:hover
+{
+    text-decoration:underline;
+    color: inherit;
+}

@@ -1,0 +1,23 @@
+{% extends 'house/base.html' %}
+
+{% block content %}
+
+<h1 class="titulo"> {{house.titulo}} </h1>
+<h4> Cidade, bairro </h4>
+
+<div class="bg-dark  " style="padding: 2% 2%;">
+<img 
+src="/media/{{house.imagem}}"
+class="card-img-top"
+style="height:30vw; object-fit: scale-down;"
+>
+</div>
+
+<div class="details">
+  <h5 class="preco"> R$ {{house.preco}} </h5>
+  <p> {{house.descricao}}  </p>
+</div>
+
+{{house.endereco}}
+
+{% endblock %}

@@ -23,7 +23,7 @@
                 <div class="col">
                   
 
-                  <a class="page-link" href="media/{{house.imagem}}">
+                  <a class="page-link" href="{% url 'house_detail' pk=house.pk %}">
                     <div class="card">
                       <img 
                       src= "media/{{house.imagem}}"
@@ -34,7 +34,7 @@
                       
                       <div class="card-body" style="height:15vw;">
                         <h5 class="card-title"> {{house.titulo}} </h5>
-                        <h5 class="card-title" style="color: red;"> R$ {{house.preco}} </h5>
+                        <h5 class="card-title preco"> R$ {{house.preco}} </h5>
                         <p class="card-text"> {{house.descricao}}  </p>
                       </div>
                       
@@ -94,18 +94,17 @@
                 <div class="col">
                   
 
-                  <a class="page-link" href="media/{{house.imagem}}">
+                  <a class="page-link" href="{% url 'house_detail' pk=house.pk %}">
                     <div class="card">
                       <img 
                       src= "media/{{house.imagem}}"
                       class="card-img-top" 
-                      alt="..."
                       style="height:10vw; object-fit: cover;"
                       >
                       
                       <div class="card-body" style="height:15vw;">
                         <h5 class="card-title"> {{house.titulo}} </h5>
-                        <h5 class="card-title" style="color: red;"> R$ {{house.preco}} </h5>
+                        <h5 class="card-title preco"> R$ {{house.preco}} </h5>
                         <p class="card-text"> {{house.descricao}}  </p>
                       </div>
                       

@@ -1,0 +1,40 @@
+{% extends 'house/base.html' %}
+
+{% block content %}
+
+<h1 class="titulo"> Minhas casas </h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4" style="margin: 0 2vw;">
+
+{% for house in  houses %}
+    <div class="col">
+        
+
+        <a class="page-link" href="{% url 'house_detail' pk=house.pk %}">
+        <div class="card shadow">
+            <img 
+            src= "media/{{house.imagem}}"
+            class="card-img-top" 
+            alt="..."
+            style="height:10vw; object-fit: cover;"
+            >
+            
+            <div class="card-body" style="height:15vw;">
+            <h5 class="card-title"> {{house.titulo}} </h5>
+            <h5 class="card-title preco"> R$ {{house.preco}} </h5>
+            <p class="card-text">  </p>
+            </div>
+            
+        </div>
+        </a>
+
+
+    </div>    
+{% endfor %}
+
+</div>
+
+<h1 class="titulo"> Meus contratos </h1>
+
+
+{% endblock %}
