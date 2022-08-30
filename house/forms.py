@@ -1,7 +1,8 @@
+from dataclasses import field
 from django import forms
+from .models import House
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.forms import TextInput, EmailInput, PasswordInput
 
 class NewUserForm(UserCreationForm):
 	email = forms.EmailField(required=True)
@@ -16,3 +17,11 @@ class NewUserForm(UserCreationForm):
 		if commit:
 			user.save()
 		return user
+
+class NewHouseForm(forms.ModelForm):
+
+	class Meta:
+		model = House
+		fields = ("titulo", "preco", "descricao", "imagem", "endereco")
+	
+

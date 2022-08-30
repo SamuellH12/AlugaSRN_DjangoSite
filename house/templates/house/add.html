@@ -1,0 +1,15 @@
+{% extends 'house/base.html' %}
+
+{% block content %}
+
+<div class="p-5">
+
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-outline-black text-white bg-dark btn-floating m-1">Save</button>
+    </form>
+
+</div>
+
+{% endblock %}

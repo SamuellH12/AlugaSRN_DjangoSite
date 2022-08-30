@@ -1,10 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
+from django.db.models import Q
 from .models import House
-from .forms import NewUserForm
+from .forms import NewUserForm, NewHouseForm
 
 
 def initial_page(request):
@@ -40,8 +42,31 @@ def myHouses(request):
     houses = House.objects.filter(dono=request.user)
     return render(request, 'house/myHouses.html', {'houses' : houses})
 
+@login_required
+def newHouse(request):
+    if request.method == "POST":
+        form = NewHouseForm(request.POST)
+        if form.is_valid():
+            house = form.save(commit=False)
+            house.dono = request.user
+            house.published_date = timezone.now()
+            house.save()
+            return redirect('house', pk=house.pk)
+    else:
+        form = NewHouseForm()
+
+    return render(request, 'house/add.html', {'form' : form})
+
 def pesquisa(request):
-    return render(request, 'house/pesquisa.html', {})
+    results = []
+    if request.method == "GET":
+        query = request.GET.get('search')
+        if query == 'None':
+            query = 'a'
+        donos = User.objects.filter( Q( first_name__icontains = query ) | Q( last_name__icontains = query ) )
+        results = House.objects.filter( Q(titulo__icontains = query) | Q( dono__in = donos ) )
+
+    return render(request, 'house/pesquisa.html', {'query': query, 'results': results})
 
 
 def register_page(request):

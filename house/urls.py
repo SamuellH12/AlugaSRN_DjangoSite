@@ -7,5 +7,6 @@ urlpatterns = [
     path('quem', views.quemSomos, name="quem"),
     path('MyHouses', views.myHouses, name='myHouses'),
     path("register/", views.register_page, name="register"),
-    path('pesquisa',  views.pesquisa, name="pesquisa")
+    path('pesquisa',  views.pesquisa, name="pesquisa"),
+    path('newHouse', views.newHouse, name="newHouse")
 ]
