@@ -1,1 +1,2 @@
 Django~=3.2.10
+django-google-maps~=0.13.0
