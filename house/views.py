@@ -45,17 +45,37 @@ def myHouses(request):
 @login_required
 def newHouse(request):
     if request.method == "POST":
-        form = NewHouseForm(request.POST)
+        form = NewHouseForm(request.POST, request.FILES)
         if form.is_valid():
             house = form.save(commit=False)
             house.dono = request.user
             house.published_date = timezone.now()
             house.save()
-            return redirect('house', pk=house.pk)
+            return redirect('house_detail', pk=house.pk)
     else:
         form = NewHouseForm()
 
     return render(request, 'house/add.html', {'form' : form})
+
+@login_required
+def editHouse(request, pk):
+    house = get_object_or_404(House, pk=pk)
+
+    if request.method == "POST":
+        form = NewHouseForm(request.POST, request.FILES, instance=house)
+        if form.is_valid():
+            house.save()
+            return redirect('house_detail', pk=house.pk)
+    else:
+        form = NewHouseForm(instance=house)
+
+    return render(request, 'house/add.html', {'form' : form})
+
+@login_required
+def deleteHouse(request, pk):
+    home = get_object_or_404(House, pk=pk)
+    home.delete()
+    return redirect('myHouses')
 
 def pesquisa(request):
     results = []
@@ -90,4 +110,4 @@ def register_page(request):
 ### ta faltando: ###
 # Filtrar por cidade e bairro
 # Google Map
-# pagina de detalhes e solicitação de compra
+# solicitação de compra

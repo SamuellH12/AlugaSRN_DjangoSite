@@ -4,7 +4,7 @@
 
 <div class="p-5">
 
-    <form method="POST" class="post-form">
+    <form method="POST" class="post-form" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-outline-black text-white bg-dark btn-floating m-1">Save</button>
