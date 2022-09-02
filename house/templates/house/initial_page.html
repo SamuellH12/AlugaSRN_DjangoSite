@@ -2,9 +2,7 @@
 
 {% block content %}
 
-    <br>
-    <h1 class="fst-italic fw-light"> #Aluga-se </h1>
-    <br>
+    <h1 class="fst-italic fw-light titulo"> Aluga e Vende-se </h1>
 
     <!--Primeiro Carrosel-->
     <div class="bg-dark  " style="padding: 0% 2%;">
@@ -73,72 +71,37 @@
 
     <br><br>
 
+    <h1 class="fst-italic fw-light titulo"> Todas as casas </h1>
     
-    <br>
-    <h1 class="fst-italic fw-light"> #Vende-se </h1>
-    <br>
-
-    <!--Segundo Carrosel-->
-    <div class="bg-dark  " style="padding: 0% 2%;">
-      <div id="carousel2" class="carousel slide d-Flex" data-bs-ride="true">
-            
-        <div class="carousel-inner" style="margin: 5.5vw;">
-
-
-          {% for houses  in HouseList %}
-
-            <div class="carousel-item {% if   forloop.counter == 1 %}active{% endif %}">
-              <div class="row row-cols-1 row-cols-md-3 g-4" style="margin: 0 2vw;">
-              
-                <!--card-->
-                {% for house in  houses %}
-                <div class="col">
+    <div class="row row-cols-1 row-cols-md-4 g-4" style="margin: 0 2vw;">
+      {% for houses  in HouseList %}
+      {% for house in  houses %}
+          <div class="col">  
+      
+            <a class="page-link" href="{% url 'house_detail' pk=house.pk %}">
+              <div class="card shadow">
+                  <img 
+                  src= "media/{{house.imagem}}"
+                  class="card-img-top" 
+                  alt="..."
+                  style="height:10vw; object-fit: cover;"
+                  >
                   
-
-                  <a class="page-link" href="{% url 'house_detail' pk=house.pk %}">
-                    <div class="card">
-                      <img 
-                      src= "media/{{house.imagem}}"
-                      class="card-img-top" 
-                      style="height:10vw; object-fit: cover;"
-                      >
-                      
-                      <div class="card-body" style="height:15vw;">
-                        <h5 class="card-title"> {{house.titulo}} </h5>
-                        <h5 class="card-title preco"> R$ {{house.preco}} </h5>
-                        <p class="card-text"> {{house.descricao}}  </p>
-                      </div>
-                      
-                    </div>
-                  </a>
-
-
-                </div>    
-                {% endfor %}
-                <!--cardEnd-->
-
-              </div>  
-            </div>
-          {% endfor %}
-
-          
-              
-        </div>
-            
-            
-        <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        
-        <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-            
-      </div>
+                  <div class="card-body" style="height:15vw;">
+                    <h5 class="card-title"> {{house.titulo}} </h5>
+                    <p class="card-text" style="margin: 0;"> {{house.dono.first_name}} {{house.dono.last_name}}  </p>
+                    <h5 class="card-title preco"> R$ {{house.preco}} </h5>
+                    <p class="card-text cardText4l"> {{house.descricao}}  </p>
+                  </div>
+                  
+              </div>
+            </a>
+      
+          </div>    
+      {% endfor %}
+      {% endfor %}
+      
     </div>
-    <!--Segundo Carrosel END-->
 
 
 {% endblock %}

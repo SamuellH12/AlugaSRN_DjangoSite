@@ -8,6 +8,14 @@
     margin: 1em 0.5em;
 }
 
+.cardText4l
+{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
 .preco
 {
     color: red;
@@ -23,4 +31,36 @@
 {
     text-decoration:underline;
     color: inherit;
+}
+
+.fotoPerfil
+{
+    width: 80%;
+    border-radius: 100%;
+    margin: 2vw;
+    transition: transform .3s;
+}
+
+.fotoPerfil:hover
+{
+    transform: scale(1.2);
+}
+
+.perfil
+{
+    text-align: center;
+    width: 20vw;
+}
+
+body
+{
+    display:flex; 
+    flex-direction:column; 
+    height:100vh; margin:0;
+}
+
+footer
+{
+    margin-top:auto; 
+    width: 100vw;
 }

@@ -3,14 +3,16 @@
 {% block content %}
 
 {% if house.dono == user %}
-<a class="" href="{% url 'house_edit' pk=house.pk %}">Editar Casa</a>
-<a class="" href="{% url 'house_delete' pk=house.pk %}">EXCLUIR Casa</a>
+<div class="d-flex justify-content-center">
+  <a class="btn btn-outline-black text-white bg-success btn-floating m-2 shadow " href="{% url 'house_edit' pk=house.pk %}">Editar Casa</a>
+  <a class="btn btn-outline-black text-white bg-danger  btn-floating m-2 shadow " href="{% url 'house_delete' pk=house.pk %}">EXCLUIR Casa</a>
+</div>
 {% endif %}
 
 <h1 class="titulo"> {{house.titulo}} </h1>
 <h4> Cidade, bairro </h4>
 
-<div class="bg-dark  " style="padding: 2% 2%;">
+<div class="bg-dark" style="padding: 2% 2%;">
 <img 
 src="/media/{{house.imagem}}"
 class="card-img-top"
