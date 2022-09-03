@@ -21,6 +21,6 @@ class NewHouseForm(forms.ModelForm):
 
 	class Meta:
 		model = House
-		fields = ("titulo", "preco", "descricao", "imagem",)
+		fields = ("titulo", "preco", "descricao", "imagem", "cidade", "bairro")
 	
 

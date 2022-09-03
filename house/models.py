@@ -11,6 +11,8 @@ class House(models.Model):
     imagem = models.ImageField(upload_to='images/')
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    cidade = models.CharField(max_length=40, default="São Raimundo Nonato")
+    bairro = models.CharField(max_length=40, default="Centro")
 
     def publish(self):
         self.published_date = timezone.now()

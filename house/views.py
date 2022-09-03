@@ -84,7 +84,7 @@ def pesquisa(request):
         if query == 'None':
             query = 'a'
         donos = User.objects.filter( Q( first_name__icontains = query ) | Q( last_name__icontains = query ) )
-        results = House.objects.filter( Q(titulo__icontains = query) | Q( dono__in = donos ) )
+        results = House.objects.filter( Q(titulo__icontains = query) | Q( dono__in = donos ) | Q( cidade__icontains = query ) | Q( bairro__icontains = query ) )
 
     return render(request, 'house/pesquisa.html', {'query': query, 'results': results})
 
@@ -108,6 +108,4 @@ def register_page(request):
 
 
 ### ta faltando: ###
-# Filtrar por cidade e bairro
-# Google Map
 # solicitação de compra

@@ -4,7 +4,7 @@
 
 <form action="{% url 'pesquisa' %}" class="form-inline d-flex  justify-content-center p-2" method="get">
 
-     <input name="search" type="" class="rounded shadow" id="" placeholder="Pesquisar">
+     <input name="search" type="" class="rounded shadow" id="" placeholder="Pesquisar nome, cidade, bairro, etc">
     
      <button type="submit" class="btn btn-outline-black text-white bg-dark btn-floating m-1 shadow">Pesquisar</button>
 
@@ -27,11 +27,12 @@
             style="height:10vw; object-fit: cover;"
             >
             
-            <div class="card-body" style="height:15vw;">
+            <div class="card-body" style="height:18vw;">
             <h5 class="card-title"> {{house.titulo}} </h5>
-            <p class="card-text" style="margin: 0;"> {{house.dono.first_name}} {{house.dono.last_name}}  </p>
+            <p class="card-text" style="margin: 0;"> {{house.cidade}} {{house.bairro}}  </p>
             <h5 class="card-title preco"> R$ {{house.preco}} </h5>
-            <p class="card-text">  </p>
+            <p class="card-text cardText4l"> {{house.descricao}}  </p>
+            <p class="card-text" style="margin: 0;"> {{house.dono.first_name}} {{house.dono.last_name}}  </p>
             </div>
             
         </div>
